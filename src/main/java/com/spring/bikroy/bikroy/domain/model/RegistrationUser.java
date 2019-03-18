@@ -19,5 +19,6 @@ public class RegistrationUser extends BasicEntity {
     private String address;
     private String email;
     private String password;
+    private int phoneNo;
     private boolean checkVerification;
 }
