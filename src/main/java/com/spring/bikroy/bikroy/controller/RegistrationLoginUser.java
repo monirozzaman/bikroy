@@ -12,6 +12,7 @@ import javax.mail.MessagingException;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class RegistrationLoginUser {
     private final RegistrationService registrationService;
 
