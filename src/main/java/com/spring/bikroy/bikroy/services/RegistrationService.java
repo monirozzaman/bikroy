@@ -7,7 +7,6 @@ import com.spring.bikroy.bikroy.domain.repository.RegistrationUserRepository;
 import com.spring.bikroy.bikroy.dto.request.CodeVarificationRequest;
 import com.spring.bikroy.bikroy.dto.request.LoginRequest;
 import com.spring.bikroy.bikroy.dto.request.RegistrationRequest;
-import com.spring.bikroy.bikroy.dto.response.ResponseIdentity;
 import com.spring.bikroy.bikroy.dto.response.ResponseProfile;
 import javassist.NotFoundException;
 import netscape.security.ForbiddenTargetException;
@@ -40,7 +39,7 @@ public class RegistrationService {
     }
 
 
-    public ResponseIdentity createUser(RegistrationRequest registrationRequest) throws MessagingException {
+    public String createUser(RegistrationRequest registrationRequest) throws MessagingException {
         String id = UUID.randomUUID().toString();
         Random rand = new Random();
         int verificationCode = rand.nextInt(5000000);
@@ -55,7 +54,7 @@ public class RegistrationService {
         registrationUser.setCheckVerification(false);
         registrationUserController.save(registrationUser);
         sendMailMultipart(registrationRequest.getEmail(), verificationCode, null, id);
-        return new ResponseIdentity(id);
+        return id;
     }
 
     public void sendMailMultipart(String toEmail, int code, File file, String userId) throws MessagingException {

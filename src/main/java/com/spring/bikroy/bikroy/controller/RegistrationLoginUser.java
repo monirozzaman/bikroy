@@ -3,7 +3,6 @@ package com.spring.bikroy.bikroy.controller;
 import com.spring.bikroy.bikroy.dto.request.CodeVarificationRequest;
 import com.spring.bikroy.bikroy.dto.request.LoginRequest;
 import com.spring.bikroy.bikroy.dto.request.RegistrationRequest;
-import com.spring.bikroy.bikroy.dto.response.ResponseIdentity;
 import com.spring.bikroy.bikroy.dto.response.ResponseProfile;
 import com.spring.bikroy.bikroy.services.RegistrationService;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,7 @@ public class RegistrationLoginUser {
     }
 
     @PostMapping("/")
-    public ResponseIdentity createUser(@RequestBody RegistrationRequest registrationRequest) throws MessagingException {
+    public String createUser(@RequestBody RegistrationRequest registrationRequest) throws MessagingException {
         return registrationService.createUser(registrationRequest);
     }
 
